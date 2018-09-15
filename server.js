@@ -21,14 +21,7 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-
-// Set mongoose to leverage built in JavaScript ES6 Promises
-// Connect to the Mongo DB
 mongoose.Promise = Promise;
-// mongoose.connect("mongodb://localhost/techcrunchdb", {
-//     useNewUrlParser: true
-// });
-
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true
 })
@@ -54,24 +47,21 @@ app.get("/", function(req, res) {
 app.get("/scrape", (req,res) => {
     request("https://techcrunch.com/", function (error, response, html) {
         var $ = cheerio.load(html);
-        
         $(".post-block").each((i, element) => { 
             let result = {};
             let a = $(element).find(".post-block__title__link");
             result.url =  a.attr("href");
             result.title =  a.text().trim();
-            let p = $(element).find(".post-block__content")
+            let p = $(element).find(".post-block__content");
             result.summary =  p.text().trim();
             db.Article.create(result)
             .then((dbArticle) => {
-                // View the added article in the console
                 console.log(dbArticle);
             })
             .catch(function (err) {
                 return res.json(err);
             });
         });
-        // If we were able to successfully scrape and save an Article, send a message to the client
         res.send("Scrape Complete");       
     });
 });

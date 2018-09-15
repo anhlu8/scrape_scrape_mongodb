@@ -1,4 +1,4 @@
-body { background-color: #F2F6D0 }
+body { background-color: orange; font-family: 'Times New Roman', Times, serif; font-size: 20px; color: black};
 #wrapper {
   width: 960px;
   margin-left: auto;
