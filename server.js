@@ -67,15 +67,15 @@ app.get("/scrape", (req,res) => {
 });
 
 // Route for retrieving all Articles from the db
-app.get("/articles", function (req, res) {
-    db.Article.find({})
-    .then(function (dbArticles) {
-        res.json(dbArticles);
-    })
-    .catch(function (err) {
-        res.json(err);
-    });
-});
+// app.get("/articles", function (req, res) {
+//     db.Article.find({})
+//     .then(function (articles) {
+//         res.render("index", { articles: articles });
+//     })
+//     .catch(function (err) {
+//         res.json(err);
+//     });
+// });
 
 // Route for retrieving all populated Articles from the db
 app.get("/articles/populated", function (req, res) {

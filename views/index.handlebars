@@ -3,7 +3,10 @@
   <main id="articles">
     <ul>
       {{#each articles}}
-        <li>{{this}}</li>
+        <li><span>Title: </span>{{this.title}}</li>
+        <li><span>Url:</span> {{this.url}}</li>
+        <li><span>Summary:</span> {{this.summary}}</li>
+        <br>
       {{/each}}
     </ul>
   </main>
