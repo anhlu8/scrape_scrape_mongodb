@@ -66,17 +66,6 @@ app.get("/scrape", (req,res) => {
     });
 });
 
-// Route for retrieving all Articles from the db
-// app.get("/articles", function (req, res) {
-//     db.Article.find({})
-//     .then(function (articles) {
-//         res.render("index", { articles: articles });
-//     })
-//     .catch(function (err) {
-//         res.json(err);
-//     });
-// });
-
 // Route for retrieving all populated Articles from the db
 app.get("/articles/populated", function (req, res) {
     db.Article.find({})
@@ -96,10 +85,7 @@ app.get("/articles/:id", function (req, res) {
         })
         .populate("note")
         .then(function (dbArticle) {
-            var hbsArticle = {
-                articles: dbArticle
-            };
-            res.render(hbsArticle);
+            res.render(dbArticle);
         })
         .catch(function (err) {
             res.json(err);
