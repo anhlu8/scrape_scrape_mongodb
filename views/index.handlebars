@@ -6,8 +6,8 @@
         <li><span>Title: </span>{{this.title}}</li>
         <li><span>Url:</span> {{this.url}}</li>
         <li><span>Summary:</span> {{this.summary}}</li>
-        <button id = "addBtn" type="button" class="btn btn-info">Add Note</button>
-        <button id = "delBtn" type="button" class="btn btn-danger">Delete Note</button>
+        <button data-id={{this._id}} id = "addBtn" type="button" class="btn btn-info">Add Note</button>
+        <button data-article={{this._id}} data-id={{this.note._id}} id = "delBtn" type="button" class="btn btn-danger">Delete Note</button>
         <hr>
       {{/each}}
     </ul>

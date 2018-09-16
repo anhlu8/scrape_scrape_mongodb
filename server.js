@@ -85,7 +85,7 @@ app.get("/articles/:id", function (req, res) {
         })
         .populate("note")
         .then(function (dbArticle) {
-            res.render(dbArticle);
+            res.json(dbArticle);
         })
         .catch(function (err) {
             res.json(err);
@@ -113,13 +113,13 @@ app.post("/articles/:id", function (req, res) {
 });
 
 // Route for delete a Note
-app.post("/delete", function (req, res) {
-    db.Note.deleteOne(dbNote._id)
+app.post("/delete/:id/:articleId", function (req, res) {
+    db.Note.deleteOne({_id: req.params.id})
         .then(function (dbNote) {
-            return db.Article.findOneAndUpdate({}, {
-                $pop: {
-                    article: dbNote._id
-                }
+            return db.Article.findOneAndUpdate({
+                _id: req.params.articleId
+            }, {
+                note: ''
             }, {
                 new: true
             });
