@@ -5,7 +5,7 @@ This app lets users view and leave comments on the latest news from TechCrunch b
 
 ## Functionality
 
-This application is hosted on Heroku and can be accessed at https://chooseyourpredator.herokuapp.com/
+This application is hosted on Heroku and can be accessed at https://sheltered-reaches-86969.herokuapp.com/
 
 If running app locally: 
 
