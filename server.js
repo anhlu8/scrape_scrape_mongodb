@@ -21,8 +21,10 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/techcrunchdb";
+
 mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true
 })
 .then(connection => {
