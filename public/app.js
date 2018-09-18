@@ -12,7 +12,6 @@ $(document).on("click", "#addBtn", function () {
             $("#notes").append("<input id='titleinput' name='title' >");
             $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
             $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
-            $("#notes").append("<button id='cancel'>Cancel</button>");
             $('#notes').show();
             // If there's a note in the article
             if (data.note) {
@@ -22,9 +21,6 @@ $(document).on("click", "#addBtn", function () {
         });
 });
 
-$(document).on("click", "#cancel", function () {
-    $("#notes").hide();
-});
 
 $(document).on("click", "#savenote", function () {
     var thisId = $(this).attr("data-id");
