@@ -7,7 +7,7 @@ var exphbs = require("express-handlebars");
 var request = require("request");
 var cheerio = require("cheerio");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 var db = require("./models");
 var app = express();
 
@@ -116,10 +116,10 @@ app.post("/articles/:id", function (req, res) {
 
 // Route for delete a Note
 app.post("/delete/:id/:articleId", function (req, res) {
-    db.Note.deleteOne({_id: req.params.id})
+    db.Note.deleteOne({_id: mongoose.Types.ObjectId(req.params.id)})
         .then(function (dbNote) {
             return db.Article.findOneAndUpdate({
-                _id: req.params.articleId
+                _id: mongoose.Types.ObjectId(req.params.articleId)
             }, {
                 note: ''
             }, {
